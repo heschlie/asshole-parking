@@ -14,11 +14,11 @@ class AhpUser(models.Model):
 
 class ReportModel(models.Model):
     title = models.CharField(max_length=255)
-    picture = None
-    photos = None
+    picture = models.OneToOneField('photologue.Photo', on_delete=models.CASCADE)
+    photos = models.OneToOneField('photologue.Gallery', on_delete=models.CASCADE)
     lat = models.DecimalField(max_digits=9, decimal_places=6)
     lon = models.DecimalField(max_digits=9, decimal_places=6)
     violation = models.CharField(max_length=255)
     submit_date = models.DateTimeField(auto_now_add=True)
-    reporter = models.ForeignKey(AhpUser, on_delete=models.CASCADE)
+    reporter = models.ForeignKey('AhpUser', on_delete=models.CASCADE)
     votes = None
