@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -19,6 +20,9 @@ class Report(models.Model):
     reporter = models.ForeignKey(settings.AUTH_USER_MODEL,
                                  on_delete=models.CASCADE)
     votes = None
+
+    def __str__(self):
+        return self.title
 
 
 class Vehicle(models.Model):
