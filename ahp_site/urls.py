@@ -14,13 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.conf.urls.static import static
-from django.contrib import admin
-
-from ahp import settings
+from . import views
 
 urlpatterns = [
-    url(r'^ahp/', include('ahp_site.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^report/(?P<report_id>[0-9]+)$', views.report_detail, name='report'),
+]
