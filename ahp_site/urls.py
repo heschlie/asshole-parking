@@ -17,5 +17,7 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    url(r'^report/(?P<report_id>[0-9]+)$', views.report_detail, name='report'),
+    url(r'^$', views.index, name='index'),
+    url(r'^reports/$', views.report_list, name='reports'),
+    url(r'^reports/(?P<report_id>[0-9]+)$', views.report_detail, name='report'),
 ]

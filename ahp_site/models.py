@@ -19,6 +19,7 @@ class Report(models.Model):
     submit_date = models.DateTimeField(auto_now_add=True)
     reporter = models.ForeignKey(settings.AUTH_USER_MODEL,
                                  on_delete=models.CASCADE)
+    description = models.TextField(blank=True, null=True)
     votes = None
 
     def __str__(self):
@@ -30,11 +31,17 @@ class Vehicle(models.Model):
     model = models.CharField(max_length=100)
     type = None
 
+    def __str__(self):
+        return '{}, {}'.format(self.make, self.model)
+
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
-    comment = models.CharField(max_length=5000)
+    comment = models.TextField()
     parent_report = models.ForeignKey(Report,
                                       on_delete=models.CASCADE)
     submit_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Comment by {}'.format(self.user)

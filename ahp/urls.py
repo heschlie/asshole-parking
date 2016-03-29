@@ -20,7 +20,7 @@ from django.contrib import admin
 from ahp import settings
 
 urlpatterns = [
-    url(r'^ahp/', include('ahp_site.urls')),
+    url(r'^', include('ahp_site.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
