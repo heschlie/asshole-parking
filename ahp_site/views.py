@@ -7,19 +7,15 @@ from .models import Report
 
 
 def index(request):
-    return HttpResponse('Welcome home.')
+    latest_reports = Report.objects.order_by('-submit_date')[:5]
+
+    return render(request, 'index.html', {'reports': latest_reports})
 
 
 def report_list(request):
-    reports = Report.objects.all()
-    reports_string = ''
-    for report in reports:
-        reports_string += \
-            '{}, {}, reported by: {}<br>'.format(report.title,
-                                                 report.violation,
-                                                 report.reporter)
+    latest_reports = Report.objects.order_by('-submit_date')
 
-    return HttpResponse(reports_string)
+    return render(request, 'report_list.html', {'reports': latest_reports})
 
 
 def report_detail(request, report_id):

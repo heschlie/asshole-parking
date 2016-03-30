@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A home for people who like to shame bad drivers</title>
+
+    {% load photologue_tags %}
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="well">
+        <h1 align="center">A-Hole Parking</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        {% for report in reports %}
+            <div class="col-md-2 well">
+                {% get_photo report.picture "thumbnail" "" %}
+                <p>{{ report.title }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+</body>
+</html>
