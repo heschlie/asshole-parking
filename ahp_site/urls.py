@@ -14,10 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.views.generic import CreateView
+from photologue.models import Photo, Gallery
+
 from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^reports/$', views.report_list, name='reports'),
-    url(r'^reports/(?P<report_id>[0-9]+)$', views.report_detail, name='report_detail'),
+    url(r'^reports/(?P<report_id>[0-9]+)$', views.report_detail,
+        name='report_detail'),
+    url(r'^upload/$', CreateView.as_view(model=Gallery, success_url='/', fields='__all__'), name='add-photo')
 ]
