@@ -19,5 +19,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^reports/$', views.report_list, name='reports'),
-    url(r'^reports/(?P<report_id>[0-9]+)$', views.report_detail, name='report'),
+    url(r'^reports/(?P<report_id>[0-9]+)$', views.report_detail, name='report_detail'),
 ]

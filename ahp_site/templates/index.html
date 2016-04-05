@@ -21,8 +21,10 @@
         <div class="col-md-1"></div>
         {% for report in reports %}
             <div class="col-md-2 well">
-                {% get_photo report.picture "thumbnail" "" %}
-                <p>{{ report.title }}</p>
+                <div align="center">
+                <a href="{% url 'report_detail' report.id %}">{% get_photo report.picture "thumbnail" "" %}</a>
+                <a href="{% url 'report_detail' report.id %}"><p>{{ report.title }}</p></a>
+                </div>
             </div>
         {% endfor %}
 
